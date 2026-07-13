@@ -9,105 +9,105 @@
                     if (staff_cant('view', 'customers')) {
                         $where_summary = ' AND userid IN (SELECT customer_id FROM ' . db_prefix() . 'customer_admins WHERE staff_id=' . get_staff_user_id() . ')';
                     } ?>
-                <div class="tw-mb-6">
-                    <div class="tw-mb-3">
-                        <h4 class="tw-my-0 tw-font-bold tw-text-xl">
-                            <?= _l('clients'); ?>
-                        </h4>
-                        <a
-                            href="<?= admin_url('clients/all_contacts'); ?>">
-                            <?= _l('customer_contacts'); ?>
-                            &rarr;
-                        </a>
-                    </div>
+                    <div class="tw-mb-6">
+                        <div class="tw-mb-3">
+                            <h4 class="tw-my-0 tw-font-bold tw-text-xl">
+                                <?= _l('clients'); ?>
+                            </h4>
+                            <a
+                                href="<?= admin_url('clients/all_contacts'); ?>">
+                                <?= _l('customer_contacts'); ?>
+                                &rarr;
+                            </a>
+                        </div>
 
-                    <div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-6 tw-gap-2">
-                        <div
-                            class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
-                            <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
-                                <?= total_rows(db_prefix() . 'clients', ($where_summary != '' ? substr($where_summary, 5) : '')); ?>
-                            </span>
-                            <span
-                                class="text-dark tw-truncate sm:tw-text-clip"><?= _l('customers_summary_total'); ?></span>
-                        </div>
-                        <div
-                            class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
-                            <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
-                                <?= total_rows(db_prefix() . 'clients', 'active=1' . $where_summary); ?></span>
-                            <span
-                                class="text-success tw-truncate sm:tw-text-clip"><?= _l('active_customers'); ?></span>
-                        </div>
-                        <div
-                            class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
-                            <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
-                                <?= total_rows(db_prefix() . 'clients', 'active=0' . $where_summary); ?></span>
-                            <span
-                                class="text-danger tw-truncate sm:tw-text-clip"><?= _l('inactive_active_customers'); ?></span>
-                        </div>
-                        <div
-                            class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
-                            <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
-                                <?= total_rows(db_prefix() . 'contacts', 'active=1' . $where_summary); ?>
-                            </span>
-                            <span
-                                class="text-info tw-truncate sm:tw-text-clip"><?= _l('customers_summary_active'); ?></span>
-                        </div>
-                        <div
-                            class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
-                            <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
-                                <?= total_rows(db_prefix() . 'contacts', 'active=0' . $where_summary); ?>
-                            </span>
-                            <span
-                                class="text-danger tw-truncate sm:tw-text-clip"><?= _l('customers_summary_inactive'); ?></span>
-                        </div>
-                        <div
-                            class="tw-flex tw-items-center tw-font-medium tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-bg-white">
-                            <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
-                                <?= total_rows(db_prefix() . 'contacts', 'last_login LIKE "' . date('Y-m-d') . '%"' . $where_summary); ?>
-                            </span>
-                            <span class="text-muted tw-truncate" data-toggle="tooltip"
-                                data-title="<?= _l('customers_summary_logged_in_today'); ?>">
-                                <?php
-                                          $contactsTemplate = '';
-                    if (count($contacts_logged_in_today) > 0) {
-                        foreach ($contacts_logged_in_today as $contact) {
-                            $url          = admin_url('clients/client/' . $contact['userid'] . '?contactid=' . $contact['id']);
-                            $fullName     = e($contact['firstname'] . ' ' . $contact['lastname']);
-                            $dateLoggedIn = e(_dt($contact['last_login']));
-                            $html         = "<a href='{$url}' target='_blank'>{$fullName}</a><br /><small>{$dateLoggedIn}</small><br />";
-                            $contactsTemplate .= html_escape('<p class="mbot5">' . $html . '</p>');
-                        } ?>
-                                <?php } ?>
-                                <span<?php if ($contactsTemplate != '') { ?>
-                                    class="pointer text-has-action"
-                                    data-toggle="popover"
-                                    data-title="<?= _l('customers_summary_logged_in_today'); ?>"
-                                    data-html="true"
-                                    data-content="<?= $contactsTemplate; ?>"
-                                    data-placement="bottom"
-                                    <?php } ?>>
-                                    <?= _l('customers_summary_logged_in_today'); ?>
-                            </span>
-                            </span>
+                        <div class="tw-grid tw-grid-cols-2 md:tw-grid-cols-3 lg:tw-grid-cols-6 tw-gap-2">
+                            <div
+                                class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
+                                <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
+                                    <?= total_rows(db_prefix() . 'clients', ($where_summary != '' ? substr($where_summary, 5) : '')); ?>
+                                </span>
+                                <span
+                                    class="text-dark tw-truncate sm:tw-text-clip"><?= _l('customers_summary_total'); ?></span>
+                            </div>
+                            <div
+                                class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
+                                <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
+                                    <?= total_rows(db_prefix() . 'clients', 'active=1' . $where_summary); ?></span>
+                                <span
+                                    class="text-success tw-truncate sm:tw-text-clip"><?= _l('active_customers'); ?></span>
+                            </div>
+                            <div
+                                class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
+                                <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
+                                    <?= total_rows(db_prefix() . 'clients', 'active=0' . $where_summary); ?></span>
+                                <span
+                                    class="text-danger tw-truncate sm:tw-text-clip"><?= _l('inactive_active_customers'); ?></span>
+                            </div>
+                            <div
+                                class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
+                                <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
+                                    <?= total_rows(db_prefix() . 'contacts', 'active=1' . $where_summary); ?>
+                                </span>
+                                <span
+                                    class="text-info tw-truncate sm:tw-text-clip"><?= _l('customers_summary_active'); ?></span>
+                            </div>
+                            <div
+                                class="tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-flex tw-items-center tw-bg-white">
+                                <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
+                                    <?= total_rows(db_prefix() . 'contacts', 'active=0' . $where_summary); ?>
+                                </span>
+                                <span
+                                    class="text-danger tw-truncate sm:tw-text-clip"><?= _l('customers_summary_inactive'); ?></span>
+                            </div>
+                            <div
+                                class="tw-flex tw-items-center tw-font-medium tw-border-neutral-300/80 tw-shadow-sm tw-text-sm tw-border tw-border-solid tw-rounded-lg tw-px-4 tw-py-3 text-sm tw-flex-1 tw-bg-white">
+                                <span class="tw-font-semibold tw-mr-1 rtl:tw-ml-1">
+                                    <?= total_rows(db_prefix() . 'contacts', 'last_login LIKE "' . date('Y-m-d') . '%"' . $where_summary); ?>
+                                </span>
+                                <span class="text-muted tw-truncate" data-toggle="tooltip"
+                                    data-title="<?= _l('customers_summary_logged_in_today'); ?>">
+                                    <?php
+                                    $contactsTemplate = '';
+                                    if (count($contacts_logged_in_today) > 0) {
+                                        foreach ($contacts_logged_in_today as $contact) {
+                                            $url          = admin_url('clients/client/' . $contact['userid'] . '?contactid=' . $contact['id']);
+                                            $fullName     = e($contact['firstname'] . ' ' . $contact['lastname']);
+                                            $dateLoggedIn = e(_dt($contact['last_login']));
+                                            $html         = "<a href='{$url}' target='_blank'>{$fullName}</a><br /><small>{$dateLoggedIn}</small><br />";
+                                            $contactsTemplate .= html_escape('<p class="mbot5">' . $html . '</p>');
+                                        } ?>
+                                    <?php } ?>
+                                    <span<?php if ($contactsTemplate != '') { ?>
+                                        class="pointer text-has-action"
+                                        data-toggle="popover"
+                                        data-title="<?= _l('customers_summary_logged_in_today'); ?>"
+                                        data-html="true"
+                                        data-content="<?= $contactsTemplate; ?>"
+                                        data-placement="bottom"
+                                        <?php } ?>>
+                                        <?= _l('customers_summary_logged_in_today'); ?>
+                                </span>
+                                </span>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php } ?>
                 <div class="tw-flex tw-justify-between tw-items-center tw-gap-x-6">
                     <div class="tw-flex tw-justify-between tw-items-center tw-gap-x-1">
                         <?php if (staff_can('create', 'customers')) { ?>
-                        <a href="<?= admin_url('clients/client'); ?>"
-                            class="btn btn-primary">
-                            <i class="fa-regular fa-plus tw-mr-1"></i>
-                            <?= _l('new_client'); ?>
-                        </a>
+                            <a href="<?= admin_url('clients/client'); ?>"
+                                class="btn btn-success btn-lg">
+                                <i class="fa fa-user-plus"></i>
+                                Create New Customer
+                            </a>
                         <?php } ?>
                         <?php if (staff_can('create', 'customers')) { ?>
-                        <a href="<?= admin_url('clients/import'); ?>"
-                            class="hidden-xs btn btn-default">
-                            <i class="fa-solid fa-upload tw-mr-1"></i>
-                            <?= _l('import_customers'); ?>
-                        </a>
+                            <a href="<?= admin_url('clients/import'); ?>"
+                                class="hidden-xs btn btn-default">
+                                <i class="fa-solid fa-upload tw-mr-1"></i>
+                                <?= _l('import_customers'); ?>
+                            </a>
                         <?php } ?>
                     </div>
                     <div id="vueApp" class="tw-inline">
@@ -135,12 +135,12 @@
                                     </div>
                                     <div class="modal-body">
                                         <?php if (staff_can('delete', 'customers')) { ?>
-                                        <div class="checkbox checkbox-danger">
-                                            <input type="checkbox" name="mass_delete" id="mass_delete">
-                                            <label
-                                                for="mass_delete"><?= _l('mass_delete'); ?></label>
-                                        </div>
-                                        <hr class="mass_delete_separator" />
+                                            <div class="checkbox checkbox-danger">
+                                                <input type="checkbox" name="mass_delete" id="mass_delete">
+                                                <label
+                                                    for="mass_delete"><?= _l('mass_delete'); ?></label>
+                                            </div>
+                                            <hr class="mass_delete_separator" />
                                         <?php } ?>
                                         <div id="bulk_change">
                                             <?= render_select('move_to_groups_customers_bulk[]', $groups, ['id', 'name'], 'customer_groups', '', ['multiple' => true], [], '', '', false); ?>
@@ -159,66 +159,66 @@
                             </div>
                         </div>
                         <?php
-                         $table_data = [];
-$_table_data                         = [
-    '<span class="hide"> - </span><div class="checkbox mass_select_all_wrap"><input type="checkbox" id="mass_select_all" data-to-table="clients"><label></label></div>',
-    [
-        'name'     => 'Customer ID',
-        'th_attrs' => ['class' => 'toggleable', 'id' => 'th-number'],
-    ],
-    [
-        'name'     => _l('clients_list_company'),
-        'th_attrs' => ['class' => 'toggleable', 'id' => 'th-company'],
-    ],
-    [
-        'name'     => _l('contact_primary'),
-        'th_attrs' => ['class' => 'toggleable', 'id' => 'th-primary-contact'],
-    ],
-    [
-        'name'     => _l('company_primary_email'),
-        'th_attrs' => ['class' => 'toggleable', 'id' => 'th-primary-contact-email'],
-    ],
-    [
-        'name'     => _l('clients_list_phone'),
-        'th_attrs' => ['class' => 'toggleable', 'id' => 'th-phone'],
-    ],
-    [
-        'name'     => _l('customer_active'),
-        'th_attrs' => ['class' => 'text-center toggleable', 'id' => 'th-active'],
-    ],
+                        $table_data = [];
+                        $_table_data                         = [
+                            '<span class="hide"> - </span><div class="checkbox mass_select_all_wrap"><input type="checkbox" id="mass_select_all" data-to-table="clients"><label></label></div>',
+                            [
+                                'name'     => 'Customer ID',
+                                'th_attrs' => ['class' => 'toggleable', 'id' => 'th-number'],
+                            ],
+                            [
+                                'name'     => _l('clients_list_company'),
+                                'th_attrs' => ['class' => 'toggleable', 'id' => 'th-company'],
+                            ],
+                            [
+                                'name'     => _l('contact_primary'),
+                                'th_attrs' => ['class' => 'toggleable', 'id' => 'th-primary-contact'],
+                            ],
+                            [
+                                'name'     => _l('company_primary_email'),
+                                'th_attrs' => ['class' => 'toggleable', 'id' => 'th-primary-contact-email'],
+                            ],
+                            [
+                                'name'     => _l('clients_list_phone'),
+                                'th_attrs' => ['class' => 'toggleable', 'id' => 'th-phone'],
+                            ],
+                            [
+                                'name'     => _l('customer_active'),
+                                'th_attrs' => ['class' => 'text-center toggleable', 'id' => 'th-active'],
+                            ],
 
-    // [
-    //     'name'     => _l('customer_groups'),
-    //     'th_attrs' => ['class' => 'toggleable', 'id' => 'th-groups'],
-    // ],
-    // [
-    //     'name'     => _l('date_created'),
-    //     'th_attrs' => ['class' => 'toggleable', 'id' => 'th-date-created'],
-    // ],
-];
+                            // [
+                            //     'name'     => _l('customer_groups'),
+                            //     'th_attrs' => ['class' => 'toggleable', 'id' => 'th-groups'],
+                            // ],
+                            // [
+                            //     'name'     => _l('date_created'),
+                            //     'th_attrs' => ['class' => 'toggleable', 'id' => 'th-date-created'],
+                            // ],
+                        ];
 
-foreach ($_table_data as $_t) {
-    array_push($table_data, $_t);
-}
+                        foreach ($_table_data as $_t) {
+                            array_push($table_data, $_t);
+                        }
 
-$custom_fields = get_custom_fields('customers', ['show_on_table' => 1]);
+                        $custom_fields = get_custom_fields('customers', ['show_on_table' => 1]);
 
-foreach ($custom_fields as $field) {
-    array_push($table_data, [
-        'name'     => $field['name'],
-        'th_attrs' => ['data-type' => $field['type'], 'data-custom-field' => 1],
-    ]);
-}
-$table_data = hooks()->apply_filters('customers_table_columns', $table_data);
-?>
+                        foreach ($custom_fields as $field) {
+                            array_push($table_data, [
+                                'name'     => $field['name'],
+                                'th_attrs' => ['data-type' => $field['type'], 'data-custom-field' => 1],
+                            ]);
+                        }
+                        $table_data = hooks()->apply_filters('customers_table_columns', $table_data);
+                        ?>
                         <div class="panel-table-full">
                             <?php
-           render_datatable($table_data, 'clients', ['number-index-2'], [
-               'data-last-order-identifier' => 'customers',
-               'data-default-order'         => get_table_last_order('customers'),
-               'id'                         => 'clients',
-           ]);
-?>
+                            render_datatable($table_data, 'clients', ['number-index-2'], [
+                                'data-last-order-identifier' => 'customers',
+                                'data-default-order'         => get_table_last_order('customers'),
+                                'id'                         => 'clients',
+                            ]);
+                            ?>
                         </div>
                     </div>
                 </div>
