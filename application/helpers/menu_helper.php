@@ -21,7 +21,7 @@ function app_init_admin_sidebar_menu_items()
     ) {
         $CI->app_menu->add_sidebar_menu_item('customers', [
             'name'     => _l('als_clients'),
-            'href'     => admin_url('clients'),
+            'href'     => admin_url('clients/client'),
             'position' => 5,
             'icon'     => 'fa-regular fa-user',
             'badge'    => [],

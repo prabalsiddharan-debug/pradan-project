@@ -25,7 +25,8 @@
     </div>
     <div class="col-md-12">
         <div class="horizontal-scrollable-tabs panel-full-width-tabs">
-            <div class="scroller arrow-left"><i class="fa fa-angle-left"></i></div>
+            <div class="scroller arro
+            w-left"><i class="fa fa-angle-left"></i></div>
             <div class="scroller arrow-right"><i class="fa fa-angle-right"></i></div>
             <div class="horizontal-tabs">
                 <ul class="nav nav-tabs customer-profile-tabs nav-tabs-horizontal customer-step-tabs" role="tablist">
@@ -182,6 +183,9 @@
                         }
                         ?>
                     </div>
+                    <!-- ==================== CUSTOMER BASIC INFO ==================== -->
+
+
 
                     <!-- Row 4: Address Section -->
 
@@ -230,7 +234,7 @@
             </div>
 
             <!-- GST DETAILS TAB -->
-            <div role="tabpanel"
+            <!-- <div role="tabpanel"
                 class="tab-pane<?= $this->input->get('tab') == 'gst_details' ? ' active' : ''; ?>"
                 id="gst_details">
                 <div class="row">
@@ -281,7 +285,87 @@
                         echo render_input('aadhar_no', 'client_aadhar_no', $aadhar_no_value, 'text'); ?>
                     </div>
                 </div>
+            </div> -->
+            <!-- GST DETAILS TAB -->
+<div role="tabpanel"
+    class="tab-pane<?= $this->input->get('tab') == 'gst_details' ? ' active' : ''; ?>"
+    id="gst_details">
+    
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+
+                <!-- Row 1 -->
+                <div class="col-md-6">
+                    <?php $gst_number_value = isset($client) ? $client->gst_number : ''; ?>
+                    <?= render_input('gst_number', 'client_gst_number', $gst_number_value, 'text'); ?>
+                </div>
+
+                <div class="col-md-6">
+                    <?php $gst_state_value = isset($client) ? $client->gst_state : ''; ?>
+                    <?= render_input('gst_state', 'client_gst_state', $gst_state_value, 'text'); ?>
+                </div>
+
             </div>
+
+            <div class="row">
+
+                <!-- GST Status -->
+                <div class="col-md-6">
+                    <?php $gst_status_value = isset($client) ? $client->gst_status : ''; ?>
+                    <div class="form-group">
+                        <label for="gst_status" class="control-label"><?= _l('client_gst_status'); ?></label>
+                        <select name="gst_status" id="gst_status" class="selectpicker form-control" data-width="100%"
+                            data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
+                            <option value=""><?= _l('dropdown_non_selected_tex'); ?></option>
+                            <option value="Active" <?= ($gst_status_value == 'Active') ? 'selected' : ''; ?>>Active</option>
+                            <option value="Inactive" <?= ($gst_status_value == 'Inactive') ? 'selected' : ''; ?>>Inactive</option>
+                            <option value="Cancelled" <?= ($gst_status_value == 'Cancelled') ? 'selected' : ''; ?>>Cancelled</option>
+                            <option value="Suspended" <?= ($gst_status_value == 'Suspended') ? 'selected' : ''; ?>>Suspended</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- GST Type -->
+                <div class="col-md-6">
+                    <?php $gst_type_value = isset($client) ? $client->gst_type : ''; ?>
+                    <div class="form-group">
+                        <label for="gst_type" class="control-label"><?= _l('client_gst_type'); ?></label>
+                        <select name="gst_type" id="gst_type" class="selectpicker form-control" data-width="100%"
+                            data-none-selected-text="<?= _l('dropdown_non_selected_tex'); ?>">
+                            <option value=""><?= _l('dropdown_non_selected_tex'); ?></option>
+                            <option value="Regular" <?= ($gst_type_value == 'Regular') ? 'selected' : ''; ?>>Regular</option>
+                            <option value="Composition" <?= ($gst_type_value == 'Composition') ? 'selected' : ''; ?>>Composition</option>
+                            <option value="Unregistered" <?= ($gst_type_value == 'Unregistered') ? 'selected' : ''; ?>>Unregistered</option>
+                            <option value="Consumer" <?= ($gst_type_value == 'Consumer') ? 'selected' : ''; ?>>Consumer</option>
+                            <option value="Overseas" <?= ($gst_type_value == 'Overseas') ? 'selected' : ''; ?>>Overseas</option>
+                            <option value="SEZ" <?= ($gst_type_value == 'SEZ') ? 'selected' : ''; ?>>SEZ</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <!-- PAN Number -->
+                <div class="col-md-6">
+                    <?php $pan_no_value = isset($client) ? $client->pan_no : ''; ?>
+                    <?= render_input('pan_no', 'client_pan_no', $pan_no_value, 'text'); ?>
+                </div>
+
+                <!-- Aadhar Number -->
+                <div class="col-md-6">
+                    <?php $aadhar_no_value = isset($client) ? $client->aadhar_no : ''; ?>
+                    <?= render_input('aadhar_no', 'client_aadhar_no', $aadhar_no_value, 'text'); ?>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
             <?php if (isset($client)) { ?>
                 <!-- CUSTOMER ADMINS TAB -->
@@ -328,7 +412,7 @@
             <?php } ?>
 
             <!-- BILLING & SHIPPING TAB -->
-            <div role="tabpanel" class="tab-pane<?= $this->input->get('tab') == 'billing_and_shipping' ? ' active' : ''; ?>" id="billing_and_shipping">
+            <!-- <div role="tabpanel" class="tab-pane<?= $this->input->get('tab') == 'billing_and_shipping' ? ' active' : ''; ?>" id="billing_and_shipping">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -405,7 +489,140 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <!-- BILLING & SHIPPING TAB -->
+<div role="tabpanel" class="tab-pane<?= $this->input->get('tab') == 'billing_and_shipping' ? ' active' : ''; ?>" id="billing_and_shipping">
+    <div class="row">
+        
+        <!-- ==================== BILLING ADDRESS ==================== -->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <?= _l('billing_address'); ?>
+                        <a href="#" class="billing-same-as-customer pull-right text-primary">
+                            <?= _l('customer_billing_same_as_profile'); ?>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <!-- Street -->
+                    <div class="form-group">
+                        <label for="billing_street" class="control-label"><?= _l('billing_street'); ?></label>
+                        <?php $value = (isset($client) ? $client->billing_street : ''); ?>
+                        <textarea name="billing_street" id="billing_street" class="form-control" rows="3"><?= $value; ?></textarea>
+                    </div>
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="billing_city" class="control-label"><?= _l('billing_city'); ?></label>
+                        <?php $value = (isset($client) ? $client->billing_city : ''); ?>
+                        <input type="text" name="billing_city" id="billing_city" value="<?= $value; ?>" class="form-control">
+                    </div>
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="billing_state" class="control-label"><?= _l('billing_state'); ?></label>
+                        <?php $value = (isset($client) ? $client->billing_state : ''); ?>
+                        <input type="text" name="billing_state" id="billing_state" value="<?= $value; ?>" class="form-control">
+                    </div>
+                    <!-- Zip Code -->
+                    <div class="form-group">
+                        <label for="billing_zip" class="control-label"><?= _l('billing_zip'); ?></label>
+                        <?php $value = (isset($client) ? $client->billing_zip : ''); ?>
+                        <input type="text" name="billing_zip" id="billing_zip" value="<?= $value; ?>" class="form-control">
+                    </div>
+                    <!-- Country -->
+                    <div class="form-group">
+                        <label for="billing_country" class="control-label"><?= _l('billing_country'); ?></label>
+                        <?php $selected = (isset($client) ? $client->billing_country : ''); ?>
+                        <select name="billing_country" id="billing_country" class="form-control">
+                            <option value=""><?= _l('dropdown_non_selected_tex'); ?></option>
+                            <?php foreach($countries as $country): ?>
+                                <option value="<?= $country['country_id']; ?>" <?= ($selected == $country['country_id']) ? 'selected' : ''; ?>>
+                                    <?= $country['short_name']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- ==================== SHIPPING ADDRESS ==================== -->
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <?= _l('shipping_address'); ?>
+                        <a href="#" class="customer-copy-billing-address pull-right text-primary">
+                            <?= _l('customer_billing_copy'); ?>
+                        </a>
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    <!-- Street -->
+                    <div class="form-group">
+                        <label for="shipping_street" class="control-label"><?= _l('shipping_street'); ?></label>
+                        <?php $value = (isset($client) ? $client->shipping_street : ''); ?>
+                        <textarea name="shipping_street" id="shipping_street" class="form-control" rows="3"><?= $value; ?></textarea>
+                    </div>
+                    <!-- City -->
+                    <div class="form-group">
+                        <label for="shipping_city" class="control-label"><?= _l('shipping_city'); ?></label>
+                        <?php $value = (isset($client) ? $client->shipping_city : ''); ?>
+                        <input type="text" name="shipping_city" id="shipping_city" value="<?= $value; ?>" class="form-control">
+                    </div>
+                    <!-- State -->
+                    <div class="form-group">
+                        <label for="shipping_state" class="control-label"><?= _l('shipping_state'); ?></label>
+                        <?php $value = (isset($client) ? $client->shipping_state : ''); ?>
+                        <input type="text" name="shipping_state" id="shipping_state" value="<?= $value; ?>" class="form-control">
+                    </div>
+                    <!-- Zip Code -->
+                    <div class="form-group">
+                        <label for="shipping_zip" class="control-label"><?= _l('shipping_zip'); ?></label>
+                        <?php $value = (isset($client) ? $client->shipping_zip : ''); ?>
+                        <input type="text" name="shipping_zip" id="shipping_zip" value="<?= $value; ?>" class="form-control">
+                    </div>
+                    <!-- Country -->
+                    <div class="form-group">
+                        <label for="shipping_country" class="control-label"><?= _l('shipping_country'); ?></label>
+                        <?php $selected = (isset($client) ? $client->shipping_country : ''); ?>
+                        <select name="shipping_country" id="shipping_country" class="form-control">
+                            <option value=""><?= _l('dropdown_non_selected_tex'); ?></option>
+                            <?php foreach($countries as $country): ?>
+                                <option value="<?= $country['country_id']; ?>" <?= ($selected == $country['country_id']) ? 'selected' : ''; ?>>
+                                    <?= $country['short_name']; ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Update transactions notice -->
+    <?php if (isset($client) && (total_rows(db_prefix() . 'invoices', ['clientid' => $client->userid]) > 0 ||
+                                 total_rows(db_prefix() . 'estimates', ['clientid' => $client->userid]) > 0 ||
+                                 total_rows(db_prefix() . 'creditnotes', ['clientid' => $client->userid]) > 0)) { ?>
+    <div class="row mtop15">
+        <div class="col-md-12">
+            <div class="tw-bg-neutral-50 tw-py-3 tw-px-4 tw-rounded-lg tw-border tw-border-solid tw-border-neutral-200">
+                <div class="checkbox checkbox-primary">
+                    <input type="checkbox" name="update_all_other_transactions" id="update_all_other_transactions">
+                    <label for="update_all_other_transactions"><?= _l('customer_update_address_info_on_invoices'); ?></label>
+                </div>
+                <p class="tw-ml-7 tw-mb-0"><?= _l('customer_update_address_info_on_invoices_help'); ?></p>
+                <div class="checkbox checkbox-primary mtop10">
+                    <input type="checkbox" name="update_credit_notes" id="update_credit_notes">
+                    <label for="update_credit_notes"><?= _l('customer_profile_update_credit_notes'); ?></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+</div>
         </div>
     </div>
     <?= form_close(); ?>
