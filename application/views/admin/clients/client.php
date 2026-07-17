@@ -90,18 +90,11 @@
                 class="tw-mt-12 md:tw-mt-0 tw-w-full <?= isset($client) ? 'tw-max-w-6xl' : 'tw-mx-auto tw-max-w-4xl'; ?>">
 
                 <?php if (!isset($client)) { ?>
-                    <div class="panel panel-default" style="margin-bottom:20px;border-radius:10px;">
-                        <div class="panel-body">
-
-                            <h3 style="margin-top:0;font-weight:600;color:#2c3e50;">
-                                <i class="fa fa-user-plus text-white"></i> &nbsp;
-                                Create New Customer
-                            </h3>
-
-                            <p style="margin-bottom:0;color:#777;">
-                                Fill in the customer information below and click <strong>Save</strong> to create the customer.
-                            </p>
-
+                    <div class="customer-entry-intro">
+                        <div class="customer-entry-intro__icon"><i class="fa fa-user-plus"></i></div>
+                        <div>
+                            <h3>Create New Customer</h3>
+                            <p>Enter customer, tax, and address details. Save when the record is ready.</p>
                         </div>
                     </div>
                 <?php } ?>
@@ -130,13 +123,21 @@
                         </div>
                     </div>
                     <?php if ($group == 'profile') { ?>
-                        <div class="panel-footer text-right tw-space-x-1" id="profile-save-section" <?php if (isset($client)) { ?>style="display:none;" <?php } ?>>
+                        <div class="panel-footer customer-action-bar" id="profile-save-section" <?php if (isset($client)) { ?>style="display:none;" <?php } ?>>
                             <?php if (! isset($client)) { ?>
-                                <button class="btn btn-default save-and-add-contact customer-form-submiter">
+                                <a href="<?= admin_url('clients'); ?>" class="btn btn-default customer-action customer-action--secondary">
+                                    <i class="fa fa-list"></i> View Customers
+                                </a>
+                                <button type="button" class="btn btn-default customer-action" id="clear-customer-form">
+                                    <i class="fa fa-eraser"></i> Clear
+                                </button>
+                                <button class="btn btn-default save-and-add-contact customer-form-submiter customer-action">
+                                    <i class="fa fa-user-plus"></i>
                                     <?= _l('save_customer_and_add_contact'); ?>
                                 </button>
                             <?php } ?>
-                            <button class="btn btn-primary only-save customer-form-submiter">
+                            <button class="btn btn-primary only-save customer-form-submiter customer-action customer-action--primary">
+                                <i class="fa fa-check"></i>
                                 <?= _l('submit'); ?>
                             </button>
                         </div>
@@ -184,6 +185,20 @@
     </script>
 <?php } ?>
 <?php $this->load->view('admin/clients/client_js'); ?>
+<?php if (!isset($client)) { ?>
+<script>
+    $(function() {
+        $('#clear-customer-form').on('click', function() {
+            var form = $('.client-form')[0];
+            if (form) {
+                form.reset();
+                $('.client-form .selectpicker').selectpicker('refresh');
+                $('.client-form input[name="company"]').focus();
+            }
+        });
+    });
+</script>
+<?php } ?>
 </body>
 
 </html>

@@ -337,3 +337,125 @@ h1, h2, h3, h4, h5, h6 {
     color: #ffffff !important;
 }
 
+/* ============================
+   Admin Navigation Theme
+   ============================ */
+/* A deep blue sidebar keeps navigation distinct while preserving a bright,
+   readable workspace for CRM data. */
+#menu.sidebar {
+    background: linear-gradient(180deg, #0b1f3a 0%, #102f57 52%, #071a31 100%) !important;
+    border-right: 1px solid rgba(148, 163, 184, 0.22) !important;
+    box-shadow: 5px 0 24px rgba(4, 18, 38, 0.2) !important;
+}
+
+#menu.sidebar .sidebar-user-profile > a.profile {
+    background: rgba(255, 255, 255, 0.10) !important;
+    border-color: rgba(255, 255, 255, 0.20) !important;
+}
+
+#menu.sidebar .sidebar-user-profile > a.profile,
+#menu.sidebar .sidebar-user-profile > a.profile span,
+#menu.sidebar .sidebar-user-profile > a.profile a {
+    color: #ffffff !important;
+}
+
+#menu.sidebar ul.nav > li > a,
+#menu.sidebar ul.nav > li > a .menu-icon,
+#menu.sidebar ul.nav > li > a .menu-text,
+#menu.sidebar ul.nav > li > a .arrow {
+    color: #ffffff !important;
+}
+
+#menu.sidebar ul.nav > li > a {
+    margin: 3px 8px !important;
+    padding: 9px 13px !important;
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+    transition: background-color .18s ease, color .18s ease, transform .18s ease !important;
+}
+
+#menu.sidebar ul.nav > li:hover > a,
+#menu.sidebar ul.nav > li.active > a,
+#menu.sidebar ul.nav > li > a:focus {
+    background: #ffffff !important;
+    border-color: rgba(15, 44, 83, 0.12) !important;
+    box-shadow: 0 6px 14px rgba(1, 13, 31, 0.20) !important;
+    transform: translateX(2px);
+}
+
+#menu.sidebar ul.nav > li:hover > a,
+#menu.sidebar ul.nav > li:hover > a .menu-icon,
+#menu.sidebar ul.nav > li:hover > a .menu-text,
+#menu.sidebar ul.nav > li:hover > a .arrow,
+#menu.sidebar ul.nav > li.active > a,
+#menu.sidebar ul.nav > li.active > a .menu-icon,
+#menu.sidebar ul.nav > li.active > a .menu-text,
+#menu.sidebar ul.nav > li.active > a .arrow,
+#menu.sidebar ul.nav > li > a:focus,
+#menu.sidebar ul.nav > li > a:focus .menu-icon,
+#menu.sidebar ul.nav > li > a:focus .menu-text,
+#menu.sidebar ul.nav > li > a:focus .arrow {
+    color: #102f57 !important;
+}
+
+#menu.sidebar .nav-second-level {
+    background: rgba(1, 15, 35, 0.24) !important;
+    border-radius: 8px;
+    margin: 2px 8px 6px;
+}
+
+#menu.sidebar .nav-second-level > li > a,
+#menu.sidebar .nav-second-level > li > a .menu-icon,
+#menu.sidebar .nav-second-level > li > a .sub-menu-text {
+    color: #dbeafe !important;
+}
+
+#menu.sidebar .nav-second-level > li:hover > a,
+#menu.sidebar .nav-second-level > li.active > a,
+#menu.sidebar .nav-second-level > li > a:focus {
+    background: #ffffff !important;
+    color: #102f57 !important;
+    border-radius: 6px !important;
+}
+
+#menu.sidebar .nav-second-level > li:hover > a,
+#menu.sidebar .nav-second-level > li:hover > a .menu-icon,
+#menu.sidebar .nav-second-level > li:hover > a .sub-menu-text,
+#menu.sidebar .nav-second-level > li.active > a,
+#menu.sidebar .nav-second-level > li.active > a .menu-icon,
+#menu.sidebar .nav-second-level > li.active > a .sub-menu-text,
+#menu.sidebar .nav-second-level > li > a:focus,
+#menu.sidebar .nav-second-level > li > a:focus .menu-icon,
+#menu.sidebar .nav-second-level > li > a:focus .sub-menu-text {
+    color: #102f57 !important;
+}
+
+/* Keep the dashboard workspace neutral instead of the old flat template blue. */
+body,
+#wrapper,
+body.styled {
+    background-color: #edf3f9 !important;
+}
+
+/* Quick-create button beside search: use the same navy/blue palette. */
+#header .navbar-nav > li.icon > a > span {
+    width: 34px !important;
+    height: 34px !important;
+    background: linear-gradient(135deg, #0d3b70, #1f6fd1) !important;
+    border: 1px solid rgba(13, 59, 112, 0.25) !important;
+    box-shadow: 0 5px 12px rgba(13, 59, 112, 0.28) !important;
+    transition: transform .18s ease, box-shadow .18s ease, filter .18s ease !important;
+}
+
+#header .navbar-nav > li.icon > a > span i {
+    color: #ffffff !important;
+}
+
+#header .navbar-nav > li.icon > a:hover > span,
+#header .navbar-nav > li.icon > a:focus > span {
+    background: linear-gradient(135deg, #0a2f5a, #1556aa) !important;
+    box-shadow: 0 8px 16px rgba(13, 59, 112, 0.34) !important;
+    filter: none !important;
+    transform: translateY(-1px) scale(1.04);
+}
+

@@ -5536,3 +5536,31 @@ input[type="radio"]:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* Customer profile tabs: white text (non-active) and keep active as existing */
+.customer-profile-tabs.nav-tabs,
+.customer-profile-tabs.nav-tabs > li > a,
+.customer-step-tabs.nav-tabs,
+.customer-step-tabs.nav-tabs > li > a {
+  color: #fff;
+}
+
+/* Non-active tabs text/icon */
+.customer-profile-tabs.nav.nav-tabs > li:not(.active) > a,
+.customer-step-tabs.nav.nav-tabs > li:not(.active) > a {
+  color: #fff !important;
+}
+
+.customer-profile-tabs.nav.nav-tabs > li:not(.active) > a:hover,
+.customer-profile-tabs.nav.nav-tabs > li:not(.active) > a:focus,
+.customer-step-tabs.nav.nav-tabs > li:not(.active) > a:hover,
+.customer-step-tabs.nav.nav-tabs > li:not(.active) > a:focus {
+  color: #fff !important;
+}
+
+/* Active tab: do not override existing style */
+.customer-profile-tabs.nav.nav-tabs > li.active > a,
+.customer-step-tabs.nav.nav-tabs > li.active > a {
+  color: inherit !important;
+}
+

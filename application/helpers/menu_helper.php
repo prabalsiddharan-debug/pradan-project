@@ -21,7 +21,9 @@ function app_init_admin_sidebar_menu_items()
     ) {
         $CI->app_menu->add_sidebar_menu_item('customers', [
             'name'     => _l('als_clients'),
-            'href'     => admin_url('clients'),
+            // Open the customer-entry screen for staff who can create customers.
+            // Staff with view-only access retain the customer-list destination.
+            'href'     => staff_can('create', 'customers') ? admin_url('clients/client') : admin_url('clients'),
             'position' => 5,
             'icon'     => 'fa-regular fa-user',
             'badge'    => [],
