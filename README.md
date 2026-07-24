@@ -1,1 +1,1 @@
-Pradan CRM - nhame changes to Pragathi
+Pradan CRM - name changes to Pragathi
