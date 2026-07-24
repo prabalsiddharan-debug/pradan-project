@@ -10,7 +10,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?php get_dark_company_logo('', 'navbar-brand logo'); ?>
+            <a class="navbar-brand logo logo-text tw-text-2xl tw-font-semibold tw-flex tw-items-center tw-gap-x-2"
+                href="<?= site_url(); ?>"
+                style="text-decoration: none !important; display: flex !important; align-items: center !important; height: 57px; padding-top: 12px; padding-bottom: 12px;">
+                <!-- SVG Logo Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="tw-h-7 tw-w-7" style="color: #ffffff !important; stroke: #ffffff !important; fill: none !important;">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <!-- Logo Text -->
+                <span style="font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif !important; color: #ffffff !important; display: inline-flex !important; align-items: baseline !important; gap: 4px; margin-left: 8px;">
+                    <strong style="font-weight: 800 !important; font-size: 22px !important; letter-spacing: -0.5px !important; text-transform: uppercase !important; color: #ffffff !important;">PRAGATHI</strong>
+                    <span style="font-weight: 300 !important; font-size: 16px !important; color: #ffffff !important; letter-spacing: 0px !important;">Home Solutions</span>
+                </span>
+            </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="theme-navbar-collapse">

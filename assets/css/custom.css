@@ -346,6 +346,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(180deg, #0b1f3a 0%, #102f57 52%, #071a31 100%) !important;
     border-right: 1px solid rgba(148, 163, 184, 0.22) !important;
     box-shadow: 5px 0 24px rgba(4, 18, 38, 0.2) !important;
+    padding-top: 20px !important;
 }
 
 #menu.sidebar .sidebar-user-profile > a.profile {
@@ -458,4 +459,259 @@ body.styled {
     filter: none !important;
     transform: translateY(-1px) scale(1.04);
 }
+
+/* ==========================================================================
+   Header Redesign: Premium Blue Gradient with Wave Overlay (Oracle EBS inspired)
+   ========================================================================== */
+#header, .navbar.header {
+    background: linear-gradient(135deg, #0a4d8c 0%, #007bb6 25%, #0099cc 60%, #00bfff 100%) !important;
+    background-image: 
+        linear-gradient(135deg, rgba(10, 77, 140, 0.98) 0%, rgba(0, 123, 182, 0.98) 30%, rgba(0, 153, 204, 0.98) 65%, rgba(0, 191, 255, 0.95) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.12' d='M0,80 C360,260 720,40 1080,180 C1200,230 1320,180 1440,120 L1440,0 L0,0 Z'%3E%3C/path%3E%3C/svg%3E") !important;
+    background-size: cover !important;
+    background-position: center !important;
+    border-bottom: 2px solid #005a8d !important;
+    height: 57px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15) !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 1005 !important; /* Ensures the header sits on top of everything, fully visible */
+}
+
+/* Force header links, icons, and text to be clean white */
+#header > button,
+#header > button > svg,
+#header .navbar-nav > li > a,
+#header .navbar-nav > li > a > span,
+#header .navbar-nav > li > a > i,
+#header .navbar-nav > li > a > svg,
+.navbar.header a.navbar-brand,
+.navbar.header ul.navbar-nav > li > a,
+.navbar.header ul.navbar-nav > li > a > span,
+.navbar.header ul.navbar-nav > li > a > i {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    /* visibility: collapse !important; */
+}
+
+/* Hover effects for header links */
+#header .navbar-nav > li > a:hover,
+#header .navbar-nav > li > a:focus,
+.navbar.header ul.navbar-nav > li > a:hover,
+.navbar.header ul.navbar-nav > li > a:focus {
+    color: #e0f2fe !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dropdown styling adjustment (ensure text in dropdowns is readable and NOT white on white) */
+#header .dropdown-menu,
+.navbar.header .dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+#header .dropdown-menu li a,
+.navbar.header .dropdown-menu li a {
+    color: #1e293b !important;
+    background: transparent !important;
+}
+
+#header .dropdown-menu li a:hover,
+.navbar.header .dropdown-menu li a:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+/* ==========================================================================
+   Admin Left Sidebar Customizations: Fixed & Scrollable
+   ========================================================================== */
+#menu.sidebar {
+    position: fixed !important;
+    top: 57px !important; /* Starts below the fixed top header */
+    bottom: 0 !important;
+    left: 0 !important;
+    height: calc(100vh - 57px) !important;
+    min-height: auto !important; /* Crucial root-cause fix for JavaScript min-height overrides */
+    max-height: calc(100vh - 57px) !important; /* Ensures it does not overflow viewport */
+    width: 230px !important;
+    z-index: 1000 !important;
+    overflow-y: auto !important; /* Shows a vertical scrollbar when items overflow */
+    overflow-x: hidden !important;
+    scroll-behavior: smooth !important; /* Smooth scrolling */
+    scrollbar-width: thin !important; /* Firefox support */
+    scrollbar-color: #007bb6 rgba(7, 26, 49, 0.5) !important; /* Firefox support */
+}
+
+/* Custom scrollbar styling for Chrome/Safari/Edge */
+#menu.sidebar::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+#menu.sidebar::-webkit-scrollbar-track {
+    background: rgba(7, 26, 49, 0.5) !important; /* Dark track matching sidebar */
+}
+
+#menu.sidebar::-webkit-scrollbar-thumb {
+    background: #007bb6 !important; /* Blue thumb matching the theme */
+    border-radius: 3px !important;
+}
+
+#menu.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #00a4e4 !important; /* Slightly brighter thumb on hover */
+}
+
+/* Adjust wrapper layout when sidebar is shown */
+#wrapper {
+    margin-left: 230px !important;
+    margin-top: 57px !important; /* Spacing to prevent content from hiding under fixed header */
+}
+
+body.hide-sidebar #wrapper {
+    margin-left: 0 !important;
+}
+
+/* ==========================================================================
+   Header Action Buttons & Alignment Styling
+   ========================================================================== */
+
+/* Perfect vertical centering for all right-side header items */
+#header ul.navbar-right {
+    display: inline-flex !important;
+    align-items: center !important; /* Perfect vertical center alignment */
+    height: 57px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#header ul.navbar-right > li {
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 100% !important;
+    margin: 0 4px !important; /* Equal spacing */
+    padding: 0 !important;
+}
+
+/* Top-Right Action Buttons: Clock, Notification, Logout */
+.header-action-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    margin: 0 !important; /* Center handled by parent flexbox */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+}
+
+.header-action-btn i,
+.header-action-btn svg {
+    color: #ffffff !important;
+    font-size: 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    line-height: 1 !important;
+}
+
+.header-action-btn:hover,
+.header-action-btn:focus {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Quick Create (+) Action Button Styling */
+#header .navbar-nav > li.header-quick-create > a.header-quick-create-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 50% !important; /* perfectly circular */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+    padding: 0 !important;
+    margin: 0 !important; /* Center handled by parent flexbox */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+#header .navbar-nav > li.header-quick-create > a.header-quick-create-btn i {
+    color: #000000 !important;
+    font-size: 16px !important;
+}
+
+#header .navbar-nav > li.header-quick-create > a.header-quick-create-btn:hover,
+#header .navbar-nav > li.header-quick-create > a.header-quick-create-btn:focus {
+    transform: translateY(-2px) !important; /* Slight lift animation */
+    background: #f1f5f9 !important; /* slightly darker white background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ==========================================================================
+   Premium Tooltip Styling (Clock, Notification, Logout tooltips)
+   ========================================================================== */
+.tooltip.fade {
+    opacity: 0 !important;
+    transform: translateY(4px) !important;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tooltip.fade.in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+.tooltip-inner {
+    background-color: #0a4d8c !important; /* Theme Primary Color */
+    color: #ffffff !important; /* White text */
+    border: none !important;
+    border-radius: 6px !important; /* 6px border radius */
+    padding: 6px 12px !important; /* Modern spacing */
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important; /* Soft shadow */
+    font-family: "Inter", sans-serif !important;
+}
+
+/* Tooltip Arrow Color matching background */
+.tooltip.top .tooltip-arrow {
+    border-top-color: #0a4d8c !important;
+}
+.tooltip.bottom .tooltip-arrow {
+    border-bottom-color: #0a4d8c !important;
+}
+.tooltip.left .tooltip-arrow {
+    border-left-color: #0a4d8c !important;
+}
+.tooltip.right .tooltip-arrow {
+    border-right-color: #0a4d8c !important;
+}
+
+/* ==========================================================================
+   Login Page Customizations (Admin Login Header Integration)
+   ========================================================================== */
+body.login_admin {
+    background-color: #edf3f9 !important;
+    overflow-y: auto !important;
+}
+
+body.login_admin .authentication-form-wrapper {
+    margin-top: 90px !important; /* Spacing below the fixed header */
+    position: relative !important;
+    z-index: 20 !important;
+}
+
+body.login_admin .company-logo {
+    display: none !important; /* Hide duplicate logo since header is visible */
+}
+
 

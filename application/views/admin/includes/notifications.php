@@ -1,12 +1,10 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed'); ?>
-<a href="#" class="dropdown-toggle notifications-icon !tw-px-0 tw-group" data-toggle="dropdown" aria-expanded="false">
-    <span class="sm:tw-inline-flex sm:tw-items-center sm:tw-justify-center sm:tw-h-8 sm:tw-w-9 sm:-tw-mt-1.5">
-        <i class="fa-regular fa-bell fa-lg tw-shrink-0 tw-text-neutral-500 group-hover:tw-text-neutral-800"></i>
-        <?php if ($current_user->total_unread_notifications > 0) { ?>
-        <span
-            class="tw-leading-none tw-px-1 tw-py-0.5 tw-text-xs bg-info tw-z-10 tw-absolute tw-rounded-full -tw-right-0.5 -tw-top-2 sm:tw-top-2 tw-min-w-[18px] tw-min-h-[18px] tw-inline-flex tw-items-center tw-justify-center icon-notifications tw-mt-px"><?= e($current_user->total_unread_notifications); ?></span>
-        <?php } ?>
-    </span>
+<a href="#" class="dropdown-toggle notifications-icon header-action-btn tw-group" data-toggle="dropdown" aria-expanded="false">
+    <i class="fa-regular fa-bell tw-shrink-0"></i>
+    <?php if ($current_user->total_unread_notifications > 0) { ?>
+    <span
+        class="tw-leading-none tw-px-1 tw-py-0.5 tw-text-xs bg-info tw-z-10 tw-absolute tw-rounded-full -tw-right-0.5 -tw-top-2 sm:tw-top-2 tw-min-w-[18px] tw-min-h-[18px] tw-inline-flex tw-items-center tw-justify-center icon-notifications tw-mt-px"><?= e($current_user->total_unread_notifications); ?></span>
+    <?php } ?>
 </a>
 <?php $_notifications = $this->misc_model->get_user_notifications(); ?>
 <ul class="dropdown-menu notifications animated fadeIn width400<?= count($_notifications) > 0 ? ' tw-pb-0' : ''; ?>"
